@@ -1,0 +1,15 @@
+{
+  "name": "kitchenexpress",
+  "version": "1.0.0",
+  "description": "express frontend for kitchen react",
+  "main": "kitchen.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1"
+  }
+}
