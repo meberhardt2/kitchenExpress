@@ -9,8 +9,7 @@ const ip = require('my-local-ip')();
 
 app.use(cors());
 
-
-if(!ip.includes("10.")){
+if(!ip.includes("10.192.106")){
 	const sslOptions = {
 		key: fs.readFileSync("/etc/letsencrypt/live/eberhardt.cloud/privkey.pem"),
 		cert: fs.readFileSync("/etc/letsencrypt/live/eberhardt.cloud/fullchain.pem")
