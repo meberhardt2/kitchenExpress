@@ -6,6 +6,7 @@ for_ocr.png
 /node_modules
 /.pnp
 .pnp.js
+/api/sqlite.db
 
 # testing
 /coverage
