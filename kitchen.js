@@ -18,6 +18,7 @@ const allowed_ip = ip.replace(/(?:\.\d+){1}$/, '');     //only allow devices on 
 const uploadMulter = multer({ dest: __dirname+'/uploads/' });
 
 
+//this will need to be fixed after docker is figured out
 fs.access(__dirname+'/../kitchenapi.json', fs.F_OK, (err) => {
 	if (err) {
 		let creds = {"sendgrid": {"apikey": "blah"},"gmail": {"userAccount": "blah@blah.blah","applicationPassword": "blah"}};
