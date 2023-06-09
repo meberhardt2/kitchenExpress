@@ -14,9 +14,19 @@ const camera = require('./api/routes/camera');
 const upload = require('./api/routes/upload');
 const tesseract = require('node-tesseract');
 const multer = require('multer');
-const creds = JSON.parse(fs.readFileSync(__dirname+'/../kitchenapi.json', 'UTF-8'));
 const allowed_ip = ip.replace(/(?:\.\d+){1}$/, '');     //only allow devices on the same network (local) to make updates
 const uploadMulter = multer({ dest: __dirname+'/uploads/' });
+
+
+fs.access(__dirname+'/../kitchenapi.json', fs.F_OK, (err) => {
+	if (err) {
+		let creds = {"sendgrid": {"apikey": "blah"},"gmail": {"userAccount": "blah@blah.blah","applicationPassword": "blah"}};
+	}
+	else{
+		let creds = JSON.parse(fs.readFileSync(__dirname+'/../kitchenapi.json', 'UTF-8'));
+	}
+});
+
 
 app.use(cors());
 
