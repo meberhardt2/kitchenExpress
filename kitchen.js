@@ -5,7 +5,6 @@ const path = require('path');
 const fs = require('fs');
 //const https = require('https');
 const http = require('http');
-const bodyParser = require('body-parser')
 const ip = require('my-local-ip')();
 const tesseract = require('node-tesseract');
 const multer = require('multer');
@@ -21,8 +20,7 @@ const camera = require('./api/routes/camera');
 const upload = require('./api/routes/upload');
 
 app.use(cors());
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(express.json({limit: '50mb'}));			//<== no longer need body parser npm library. this replaces it
 
 //this isn't  needed as it's now behind a reverse proxy, the ssl certs are handled by it
 /*
