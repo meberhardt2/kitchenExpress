@@ -20,5 +20,8 @@
     "node-tesseract": "^0.2.7",
     "nodemailer": "^6.9.3",
     "sqlite3": "^5.1.6"
+  },
+  "devDependencies": {
+    "eslint": "^8.42.0"
   }
 }
