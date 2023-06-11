@@ -21,6 +21,7 @@ const upload = require('./api/routes/upload');
 
 app.use(cors());
 app.use(express.json({limit: '50mb'}));			//<== no longer need body parser npm library. this replaces it
+app.set('trust proxy', true);
 
 //this isn't  needed as it's now behind a reverse proxy, the ssl certs are handled by it
 /*
