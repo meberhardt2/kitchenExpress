@@ -1,8 +1,8 @@
 /**************************************************************************************/
-const camera = (app,DB,fs,tesseract,allowed_ip) => {
+const camera = async (request,response,app,DB,fs,tesseract,allowed_ip) => {
 
 	/********************************************/
-	app.post('/api/camera', async (request, response) => {
+	if(request.method === "POST" && request.url === '/api/camera'){
 		const remoteAddress = request.get("x-real-ip");
 		if(remoteAddress.includes(allowed_ip)){
 			let file = '../kitchenExpress/uploads/for_ocr.png';
@@ -32,7 +32,7 @@ const camera = (app,DB,fs,tesseract,allowed_ip) => {
 		else{
 			response.json({'status': 'forbidden'});
 		}
-	});
+	}
 	/********************************************/
 
 }
