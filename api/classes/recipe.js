@@ -41,7 +41,7 @@ module.exports = class recipe{
 	/********************************************/
 	delete(){
 		let sql = 'delete from recipe where id = ?;';
-		this.DB.prepare(sql).run(this.id);
+		let data = this.DB.prepare(sql).run(this.id);
 	}
 	/********************************************/
 
@@ -169,7 +169,7 @@ module.exports = class recipe{
 	/********************************************/
 	gmail(){
 		const nodemailer = require('nodemailer');
-		//let message = {};
+		let message = {};
 
 		let recipe = this.get();
 		let body = "Ingredients:\n" +
@@ -187,15 +187,15 @@ module.exports = class recipe{
 				pass: this.creds.gmail.applicationPassword, // Gmail password
 			}
 		});
-	
+	 
 		let mailOptions = {
 			from: '"Matt Eberhardt" <matthew.eberhardt@gmail.com>',
 			to: this.post.email, // Recepient email address. Multiple emails can send separated by commas
 			subject: 'Recipe from the Eberhardts',
 			text: body
 		};
-	
-		transporter.sendMail(mailOptions, (error) => {
+	 
+		transporter.sendMail(mailOptions, (error, info) => {
 			if (error) {
 				return console.log(error);
 			}

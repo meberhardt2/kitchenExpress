@@ -1,3 +1,9 @@
+/**************************************************************************/
+/* changes to routes and classes should not be done here, just kitchen.js */
+/**************************************************************************/
+
+global.Dev = false;
+
 const express = require("express");
 const cors = require('cors');
 const app = express();
@@ -30,7 +36,11 @@ http.createServer(app).listen(4100);
 //this is opened only once, when node executes the file, it doesn't connect on each request like php
 const DB_PATH = __dirname+'/sqlite.db';
 const sqlite3 = require('better-sqlite3');
-const DB = new sqlite3(DB_PATH);
+const DB = new sqlite3(DB_PATH, sqlite3.OPEN_READWRITE, (err) => {
+	if (err) {
+		console.error(err.message);
+	}
+});
 
 
 //if any of the routes below are triggers on a request, it won't continue to check
